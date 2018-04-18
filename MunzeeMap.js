@@ -1,23 +1,17 @@
 // ==UserScript==
-// @name        MunzeeMap
-// @namespace   MunzeeMap
-// @include     http*://www.munzee.com/map*
-// @version     2.0.6
-// @grant       none
-// @description Munzee filter map script
+// @name           MunzeeMap
+// @name:cs        MunzeeMap
+// @namespace      Jakuje.Greasemonkey.Munzee
+// @include        https://www.munzee.com/map*
+// @version        2.0.7
+// @grant          none
+// @description    Munzee filter map script
+// @description:cs Umožňuje filtrovat munzee podle typů
 // ==/UserScript==
 
 jQuery(document).ready(function ($) {
 	var img_url = 'https://dl.dropboxusercontent.com/u/3657753/munzee/';
 			
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga3');
-
-  ga3('create', 'UA-3267689-27', 'auto');
-  ga3('send', 'pageview');
-
 	var icons = [];
 	var perFilter = [];
 	var filterOn = false;
@@ -95,14 +89,6 @@ var res = patt.test(data.icon.url);
 			iconsList += '</div>';
 		});
 		$('#filterIcons').html(iconsList +
-			'<div style="float: right">'+
-			'<form target="_blank" method="post" action="https://www.paypal.com/cgi-bin/webscr" style="padding-left: 15px" title="Like this script?\nBuy me a beer!">' +
-			'<input type="hidden" value="_s-xclick" name="cmd">' +
-			'<input type="hidden" value="EVCE68LXNRUU4" name="hosted_button_id">' +
-			'<input border="0" type="image" alt="Like this script? Buy me a beer!" name="submit" src="'+img_url+'donate_beer.gif">' +
-			'<img border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" alt="">' +
-			'</form>' +
-			'</div>'+
 			'<div style="float: right">' +
             '<a id="geoReload" href="'+geoLink+'" title="Get link to this map position"><i class="fa fa-external-link"></i></a><br />' +
             '<a href="'+geoLink+'" title="Reload map"><i class="fa fa-refresh"></i></a>' +
