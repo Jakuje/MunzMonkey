@@ -9,9 +9,10 @@
 // @description:cs Umožňuje filtrovat munzee podle typů
 // ==/UserScript==
 
-jQuery(document).ready(function ($) {
-	var img_url = 'https://dl.dropboxusercontent.com/u/3657753/munzee/';
-			
+(function() {
+    'use strict';
+	var img_url = 'https://jakuje.dta3.com/files/munzee/';
+
 	var icons = [];
 	var perFilter = [];
 	var filterOn = false;
@@ -25,23 +26,20 @@ jQuery(document).ready(function ($) {
 		$.each(allmarkers, function (key, data) {
 			var caps = data.number_of_captures;
 			//console.log(data.icon.url);
-			var patt = new RegExp("motel\.svg");
-var res = patt.test(data.icon.url);
+			var patt = new RegExp("motel\.png");
+			var res = patt.test(data.icon.url);
 			if (res  && caps < 5) {
 				data.icon.url = img_url+'motel' + caps + '.png';
 
 			}
-			var patt = new RegExp("hotel\.svg");
-var res = patt.test(data.icon.url);
+			var patt = new RegExp("hotel\.png");
+			var res = patt.test(data.icon.url);
 			if (res  && caps < 10) {
-
-
-				data.icon.url = img_url+'munzee_hotel'+caps+'.png';
-
+				data.icon.url = img_url+'hotel'+caps+'.png';
 			}
-			
-		var patt = new RegExp("virtual\.svg");
-var res = patt.test(data.icon.url);
+
+			var patt = new RegExp("virtual\.png");
+			var res = patt.test(data.icon.url);
 			if (res) {
 
 				data.icon.url = img_url+'virtual.png';
@@ -84,7 +82,7 @@ var res = patt.test(data.icon.url);
 			}
 			iconsList += '<div style="padding: 0 5px 0 0;float:left;">';
 			iconsList += '<div style="text-align: center; font-size: 10px">' + kiek[data] + '</div>';
-			iconsList += '<img style="' + style + 'cursor:pointer; border-radius: 500px" class="haideris ' + clase + '" height="32px" src="' + data + '" title="Right mouse click\nto hide other icons" />';
+			iconsList += '<img style="' + style + 'cursor:pointer; border-radius: 10px" class="haideris ' + clase + '" height="32px" src="' + data + '" title="Right mouse click\nto hide other icons" />';
 			//	iconsList += '<div class="only_this" style="cursor:pointer;text-align: center; font-size: 10px" data-icon="' +data+ '" >ONLY</div>';
 			iconsList += '</div>';
 		});
@@ -169,5 +167,4 @@ var res = patt.test(data.icon.url);
         return false;
     });
 
-});
-
+})();
