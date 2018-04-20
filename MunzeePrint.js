@@ -1,29 +1,21 @@
 // ==UserScript==
-// @name           	MunzeePrint
-// @namespace      	Nerjuz
-// @author         	Nerjuz <userscripts@ite.lt>
-// @version		1.1
-// @namespace   	http://qr.ite.lt
-// @description 	Print munzees easy
-// @include     	*www.munzee.com*
-// @grant       	none
+// @name                MunzeePrint
+// @author              Nerjuz <userscripts@ite.lt>
+// @version             1.2
+// @namespace           Jakuje.Greasemonkey.Munzee
+// @description         Print munzees easy
+// @description:cs      Jednoduchý tisk munzee
+// @include             https://www.munzee.com/print*
+// @grant               none
 // ==/UserScript==
-var versija = 0.2;
+
 jQuery(document).ready(function($) {
-// Analytic
-
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga2');
-
-  ga2('create', 'UA-3267689-24', 'ite.lt');
-  ga2('send', 'pageview');
 
 // Top menu
 $('.navbar-right').append(' <li class="nav-short tooltip-helper" data-toggle="tooltip" data-placement="bottom" title="Print Munzees"><a href="/print/"><i class="fa fa-print"></i><span class="visible-xs">Print</span></a></li>');
 // EOF Top menu
-//Bach print
+
+//Batch print
 var thisRegex = new RegExp('com\/print');
 if (thisRegex.test(document.URL)) {
 
@@ -221,16 +213,7 @@ if (thisRegex.test(document.URL)) {
     $('#extra-wrapper').remove(); 
 $('#listPDF').append('<div style="clear:both;">&nbsp;</div>'); 
 
-$('#sidebarPDF').append('<div style="padding-top:25px;"><h3>Like this script?</h3><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">'+
-'<input type="hidden" name="cmd" value="_s-xclick">'+
-'<input type="hidden" name="hosted_button_id" value="EVCE68LXNRUU4">'+
-'<input type="image" src="http://qr.ite.lt/img/donate.png" border="0" name="submit" alt="Like this script? Buy me a beer!">'+
-'<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">'+
-'</form></div>');
 }
+// EOF Batch print
 
-
-
-
-// EOF Bach print
 });
