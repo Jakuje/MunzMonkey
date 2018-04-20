@@ -1,25 +1,26 @@
 // ==UserScript==
 // @name           MunzeeZoomMap
 // @name:cs        MunzeeZoomMap
-// @namespace      Jakuje.Greasemonkey.Munzee
+// @namespace      Kaas.Greasemonkey.Munzee
 // @description    Enables you to zoom a Munzee map into a larger scale.
 // @description:cs Umožňuje zoomovat munzee mapu do většího měřítka.
 // @include        https://www.munzee.com/map*
-// @version        2.0.0
+// @version        1.0.0
 // @grant          none
-// @require        https://code.jquery.com/jquery-3.3.1.min.js
 // ==/UserScript==
 
-(function() {
+jQuery(document).ready(function ($)
+{
   // original values:
   //  12 for "only vacant rooms"
   //  15 for "show circle"
   //  13 for everything else
   var newMinZoom = 8;
+  
+  _minZoom = newMinZoom;  // override default
+  the_map.setOptions({minZoom:  newMinZoom});
 
-  window.eval("_minZoom = " + newMinZoom);  // override default
-  window.eval("the_map.setOptions({minZoom: " + newMinZoom + "});"); // make it happen
+  $('#check_vacant').change(function( ) { the_map.setOptions({minZoom:  newMinZoom}); });
+  $('#check_circles').change(function( ) { the_map.setOptions({minZoom:  newMinZoom}); });
+});
 
-  window.eval("$('#check_vacant').change(function() { the_map.setOptions({minZoom: "+newMinZoom+"}); });");
-  window.eval("$('#check_circles').change(function(){ the_map.setOptions({minZoom: "+newMinZoom+"}); });");
-})();
